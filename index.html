@@ -11,6 +11,7 @@
             font-family: 'Kanit', sans-serif;
             background: #fdfdfd;
             letter-spacing: 0.01em;
+            overflow-x: hidden;
         }
         .font-mitr {
             font-family: 'Mitr', sans-serif;
@@ -52,6 +53,8 @@
             font-size: 9px;
             letter-spacing: 0.05em;
         }
+
+        /* --- Animations --- */
         @keyframes elegant-shine {
             0% { transform: scale(1); filter: brightness(1); }
             50% { transform: scale(1.03); filter: brightness(1.1); }
@@ -62,6 +65,26 @@
             50% { opacity: 0.7; }
             100% { opacity: 1; }
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
         .feature-disabled {
             color: #9ca3af;
             opacity: 0.45;
@@ -70,18 +93,32 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
         }
+        /* New Premium Button Style */
+        .btn-premium {
+            background: white;
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.08);
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            border-color: #ec4899;
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.15);
+            background: linear-gradient(to right, #fff, #fff5f7);
+        }
     </style>
 </head>
 <body class="text-gray-800">
-
     <!-- Hero Section -->
-    <header class="py-24 px-6 text-center bg-white relative overflow-hidden">
+    <header class="py-16 md:py-24 px-6 text-center bg-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
             <svg width="100%" height="100%"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" /></svg>
         </div>
-        
-        <h1 class="text-4xl md:text-6xl font-mitr font-bold text-pink-500 mb-4 tracking-tight">Web Card Service</h1>
-        <p class="text-xl text-gray-500 font-light max-w-2xl mx-auto">สร้างความทรงจำสุดพิเศษ ผ่านหน้าเว็บไซต์ส่วนตัวที่ออกแบบมาเพื่อคุณโดยเฉพาะ</p>
+        <!-- Logo with Floating Animation -->
+        <div class="mb-6 relative z-10 animate-fade-in-up">
+            <img src="https://i.ibb.co/k268SxR2/WHALE3.png" alt="Web Card Service Logo" class="w-24 h-24 md:w-32 md:h-32 mx-auto drop-shadow-sm object-contain animate-float">
+        </div>
+        <h1 class="text-4xl md:text-6xl font-mitr font-bold text-pink-500 mb-4 tracking-tight relative z-10 animate-fade-in-up delay-100">Web Card Service</h1>
+        <p class="text-xl text-gray-500 font-light max-w-2xl mx-auto relative z-10 animate-fade-in-up delay-200">สร้างความทรงจำสุดพิเศษ ผ่านหน้าเว็บไซต์ส่วนตัวที่ออกแบบมาเพื่อคุณโดยเฉพาะ</p>
     </header>
 
     <div class="section-divider"></div>
@@ -89,9 +126,8 @@
     <!-- Pricing Section -->
     <section class="max-w-6xl mx-auto py-20 px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            
             <!-- Tier 159 (Premium) -->
-            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl hover-scale flex flex-col border-2 border-pink-200 relative z-10">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl hover-scale flex flex-col border-2 border-pink-200 relative z-10 animate-fade-in-up">
                 <div class="card-gradient-159 p-10 text-center text-white relative">
                     <span class="absolute top-4 right-4 badge-hot text-white uppercase font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1">
                         🔥 HOT DEAL
@@ -103,21 +139,21 @@
                 <div class="p-10 flex-grow">
                     <ul class="space-y-5">
                         <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> เพลงประกอบเว็บ</li>
-                        <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> ใส่รูปภาพได้ไม่จำกัด</li>
-                        <li class="flex items-center text-gray-700 font-semibold text-pink-600"><span class="flex items-center justify-center w-6 h-6 bg-pink-100 text-pink-600 rounded-full text-xs mr-3 font-bold">✓</span> มินิเกมสุดคิ้วท์</li>
+                        <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> ใส่รูปภาพได้</li>
+                        <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> มินิเกมสุดคิ้วท์</li>
                         <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> คิวอาร์โค้ดเพลง</li>
                         <li class="flex items-center text-gray-700"><span class="flex items-center justify-center w-6 h-6 bg-green-100 text-green-600 rounded-full text-xs mr-3 font-bold">✓</span> ระบบ Q&A ถาม-ตอบ</li>
                     </ul>
                 </div>
                 <div class="p-8 bg-gray-50/50">
-                    <a href="https://whale226315.github.io/whale.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-pink-500 text-white rounded-2xl font-bold shadow-lg hover:bg-pink-600 transition-colors text-center text-lg tracking-wide">
+                    <a href="https://whalewebcard.github.io/whale.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-pink-500 text-white rounded-2xl font-bold shadow-lg hover:bg-pink-600 transition-colors text-center text-lg tracking-wide">
                         เลือกแพ็กเกจนี้
                     </a>
                 </div>
             </div>
 
             <!-- Tier 129 -->
-            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover-scale flex flex-col mt-4 md:mt-8">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover-scale flex flex-col mt-4 md:mt-8 animate-fade-in-up delay-100">
                 <div class="card-gradient-129 p-10 text-center text-white">
                     <h3 class="text-2xl font-mitr font-medium mb-2">Standard Set</h3>
                     <div class="text-5xl font-bold price-tag mb-1">129.-</div>
@@ -132,14 +168,14 @@
                     </ul>
                 </div>
                 <div class="p-8">
-                    <a href="https://whale226315.github.io/whalewebcard.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-blue-500 text-white rounded-2xl font-bold shadow-md hover:bg-blue-600 transition-colors text-center tracking-wide">
+                    <a href="https://whalewebcard.github.io" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-blue-500 text-white rounded-2xl font-bold shadow-md hover:bg-blue-600 transition-colors text-center tracking-wide">
                         เลือกแพ็กเกจนี้
                     </a>
                 </div>
             </div>
 
             <!-- Tier 99 -->
-            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover-scale flex flex-col mt-4 md:mt-8">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover-scale flex flex-col mt-4 md:mt-8 animate-fade-in-up delay-200">
                 <div class="card-gradient-99 p-10 text-center text-white">
                     <h3 class="text-2xl font-mitr font-medium mb-2">Lite Set</h3>
                     <div class="text-5xl font-bold price-tag mb-1">99.-</div>
@@ -153,32 +189,28 @@
                     </ul>
                 </div>
                 <div class="p-8">
-                    <a href="https://whale226315.github.io/whale227.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-green-500 text-white rounded-2xl font-bold shadow-md hover:bg-green-600 transition-colors text-center tracking-wide">
+                    <a href="https://whalewebcard.github.io/whale227.github.io/" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-green-500 text-white rounded-2xl font-bold shadow-md hover:bg-green-600 transition-colors text-center tracking-wide">
                         เลือกแพ็กเกจนี้
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- Queue & Info Section -->
-    <section class="max-w-5xl mx-auto mb-24 px-6">
+    <section class="max-w-5xl mx-auto mb-24 px-6 animate-fade-in-up delay-300">
         <div class="bg-white rounded-[3rem] p-10 md:p-14 shadow-sm border border-gray-100 relative">
             <div class="flex flex-col md:flex-row gap-12 items-center">
-                
                 <div class="flex-1 w-full">
                     <h2 class="text-3xl font-mitr font-semibold mb-8 flex items-center text-gray-800">
                         <span class="bg-blue-50 p-2 rounded-xl mr-4 text-2xl">📅</span> รายละเอียดการจองคิว
                     </h2>
-                    
                     <div class="space-y-6">
                         <div class="group p-6 bg-gray-50/50 rounded-3xl border border-gray-100 transition-all hover:bg-white hover:shadow-md">
                             <h4 class="font-bold text-blue-600 text-lg mb-1">คิวปกติ</h4>
-                            <p class="text-gray-600">รอรับงานภายใน 3-5 วัน</p>
-                            <p class="text-xs text-gray-400 mt-2">*เร็วสุด 3 วันช้าสุด 5 วัน หรืออาจจะเร็วกว่านั้นขึ้นอยู่กับคิวงาน</p>
+                            <p class="text-gray-600 text-sm">รอรับงานภายใน 3-5 วัน</p>
+                            <p class="text-[11px] text-gray-400 mt-2 leading-relaxed font-light italic">*เร็วสุด 3 วันช้าสุด 5 วัน หรืออาจจะเร็วกว่านั้นขึ้นอยู่กับคิวงาน</p>
                         </div>
-                        
                         <div class="group p-6 bg-red-50/30 rounded-3xl border border-red-50 transition-all hover:bg-white hover:shadow-md">
                             <div class="flex items-center justify-between mb-2">
                                 <h4 class="font-bold text-red-600 text-lg">งานเร่ง (Express)</h4>
@@ -190,21 +222,30 @@
                     </div>
                 </div>
 
-                <div class="w-full md:w-2/5 flex flex-col justify-center items-center p-10 bg-gradient-to-br from-pink-50 to-white rounded-[2.5rem] border border-pink-100 shadow-inner">
-                    <div class="mb-6 bg-white p-4 rounded-full shadow-sm">
+                <div class="w-full md:w-2/5 flex flex-col justify-center items-center p-10 bg-gradient-to-br from-gray-50 to-white rounded-[2.5rem] border border-gray-100 shadow-inner">
+                    <div class="mb-6 bg-white p-4 rounded-full shadow-sm border border-pink-50">
                         <span class="text-4xl">💬</span>
                     </div>
-                    <p class="text-center text-gray-500 mb-6 font-light leading-relaxed">สนใจสั่งทำ หรือสอบถามเพิ่มเติม<br><span class="text-pink-600 font-semibold underline decoration-pink-200 underline-offset-4">กดปุ่มด้านล่างเลย</span></p>
-                    <div class="w-full">
-                        <a href="https://discord.gg/CBsZEVpjBN" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#5865F2] text-white rounded-2xl font-bold shadow-xl hover:bg-[#4752c4] transition-all transform hover:scale-105 active:scale-95">
-                            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                    <p class="text-center text-gray-600 mb-6 font-medium text-sm leading-relaxed">สนใจสั่งทำ หรือสอบถามเพิ่มเติม<br>กดปุ่มด้านล่างเลย</p>
+                    <div class="w-full space-y-3">
+                        <a href="https://line.me/ti/p/~@749blbpk" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#06C755] text-white rounded-2xl font-bold shadow-xl hover:bg-[#05b34c] transition-all transform hover:scale-[1.02] active:scale-95">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 5.51 2 9.83c0 1.95.89 3.73 2.37 5.09c-.3 1.1-.96 2.41-1.12 2.76c-.22.45.1.4.21.33c.12-.07 1.83-1.22 3.12-2.12c.45.13.93.2 1.42.2c5.52 0 10-3.51 10-7.83S17.52 2 12 2zm3.8 11.23h-1.22c-.17 0-.3-.13-.3-.3v-3.72c0-.17.13-.3.3-.3h1.22c.17 0 .3.13.3.3v3.72c0 .17-.13.3-.3.3zm-3.13-1.74l-.94-1.29l-.01-.02a.333.333 0 0 0-.25-.13h-1.22c-.17 0-.3.13-.3.3v3.72c0 .17.13.3.3.3h1.22c.17 0 .3-.13.3-.3v-1.13l.94 1.29c.07.1.18.17.31.17h1.22c.17 0 .3-.13.3-.3v-3.72c0-.17-.13-.3-.3-.3h-1.22c-.13 0-.24.06-.31.17l-.01.01c-.01.01-.02.03-.03.04zM8.2 11.23c0-.17-.13-.3-.3-.3H6.68c-.17 0-.3.13-.3.3v3.72c0 .17.13.3.3.3h2.14c.17 0 .3-.13.3-.3v-.81c0-.17-.13-.3-.3-.3h-.92v-2.31c.17 0 .3-.13.3-.3z"/>
+                            </svg>
+                            <span class="text-base tracking-wide">Contact via Line</span>
+                        </a>
+                        <a href="https://discord.gg/CBsZEVpjBN" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-3 w-full py-4 bg-[#5865F2] text-white rounded-2xl font-bold shadow-lg hover:bg-[#4752c4] transition-all transform hover:scale-[1.02] active:scale-95">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
                                 <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.086 2.157 2.419c0 1.334-.966 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.086 2.157 2.419c0 1.334-.946 2.419-2.157 2.419z"/>
                             </svg>
-                            <span class="text-lg">Discord</span>
+                            <span class="text-base tracking-wide">Contact via Discord</span>
+                        </a>
+                        <a href="https://whalewebcard.github.io/HowtoOrder/" target="_blank" rel="noopener noreferrer" class="btn-premium flex items-center justify-center space-x-2 w-full py-3.5 text-pink-500 rounded-2xl font-semibold transform hover:scale-[1.02] active:scale-95 whitespace-nowrap overflow-hidden">
+                            <span class="text-lg flex-shrink-0">🛒</span>
+                            <span class="text-[0.85rem] md:text-[0.9rem] uppercase tracking-wider font-mitr">วิธีการสั่งซื้อสินค้า</span>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -212,6 +253,5 @@
     <footer class="text-center py-12 text-gray-400 text-sm border-t border-gray-50">
         <p class="font-light">© 2024 <span class="font-medium text-pink-400">Web Card Service</span>. All Rights Reserved.</p>
     </footer>
-
 </body>
 </html>
